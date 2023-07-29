@@ -1,0 +1,44 @@
+name: Test
+
+on:
+  # run on any pr.
+  pull_request:
+    paths:
+      - '*.tf'
+      - '**/*.tf'
+      - '.github/workflows/test.yaml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: terraform fmt
+        uses: dflook/terraform-fmt@v1
+
+      - name: Render terraform docs inside the README.md and push changes back to PR branch
+        uses: terraform-docs/gh-actions@v1.0.0
+        with:
+          working-dir: .
+          output-file: README.md
+          output-method: inject
+          git-push: "true"
+
+      - uses: terraform-linters/setup-tflint@v3
+        name: Setup TFLint
+
+      - name: Show version
+        run: tflint --version
+
+      - name: Init TFLint
+        run: tflint --init
+        env:
+          # https://github.com/terraform-linters/tflint/blob/master/docs/user-guide/plugins.md#avoiding-rate-limiting
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Run TFLint
+        run: tflint -f compact
