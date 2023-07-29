@@ -1,6 +1,26 @@
 # terraform-kubernetes-access
 Terraform module that prepares kubernetes for remote access
 
+## Usage
+```hcl
+module "example" {
+  source  = "terraform-kubernetes-access"
+  version = "1.0.0"
+
+  service_name                    = "argocd-remote-cluster"
+  create_cluster_wide_permissions = true
+
+  kubernetes_cluster_endpoint = "https://kubernetes.docker.internal:6443"
+  vault_store_argocd_access   = true
+  vault_mount_path            = "secret"
+  vault_secret_path           = "argocd/remote-clusters/example"
+}
+```
+
+## Examples
+- [ArgoCD](https://github.com/terraform-kubernetes-access/tree/master/examples/argocd): Prepare kubernetes for argocd managed cluster
+- [Jenkins](https://github.com/terraform-kubernetes-access/tree/master/examples/jenkins): Prepare kubernetes for Jenkins remote clouds
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
