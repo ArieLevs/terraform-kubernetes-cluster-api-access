@@ -1,0 +1,12 @@
+repos:
+  - repo: https://github.com/zricethezav/gitleaks
+    rev: v8.17.0
+    hooks:
+      - id: gitleaks
+        entry: gitleaks detect --no-git --verbose --redact
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.81.0
+    hooks:
+      - id: terraform_fmt
+      - id: terraform_docs
+      - id: terraform_tflint
