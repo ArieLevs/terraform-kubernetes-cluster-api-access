@@ -1,10 +1,10 @@
-# terraform-kubernetes-access
+# terraform-kubernetes-cluster-api-access
 Terraform module that prepares kubernetes for remote access
 
 ## Usage
 ```hcl
 module "example" {
-  source  = "terraform-kubernetes-access"
+  source  = "ArieLevs/cluster-api-access/kubernetes"
   version = "1.0.0"
 
   service_name                    = "argocd-remote-cluster"
@@ -18,8 +18,8 @@ module "example" {
 ```
 
 ## Examples
-- [ArgoCD](https://github.com/terraform-kubernetes-access/tree/master/examples/argocd): Prepare kubernetes for argocd managed cluster
-- [Jenkins](https://github.com/terraform-kubernetes-access/tree/master/examples/jenkins): Prepare kubernetes for Jenkins remote clouds
+- [ArgoCD](https://github.com/ArieLevs/terraform-kubernetes-cluster-api-access/tree/master/examples/argocd): Prepare kubernetes for argocd managed cluster
+- [Jenkins](https://github.com/ArieLevs/terraform-kubernetes-cluster-api-access/tree/master/examples/jenkins): Prepare kubernetes for Jenkins remote clouds
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
