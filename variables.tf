@@ -27,7 +27,7 @@ variable "service_roles" {
     all = {
       api_groups     = ["*"]
       resources      = ["*"]
-      resource_names = ["*"]
+      resource_names = []
       verbs          = ["*"]
     }
   }
