@@ -5,7 +5,7 @@ Terraform module that prepares kubernetes for remote access
 ```hcl
 module "example" {
   source  = "ArieLevs/cluster-api-access/kubernetes"
-  version = "1.0.0"
+  version = "1.0.2"
 
   service_name                    = "argocd-remote-cluster"
   create_cluster_wide_permissions = true
