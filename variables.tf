@@ -3,6 +3,12 @@ variable "service_name" {
   type        = string
 }
 
+variable "service_account_annotations" {
+  description = "A map with the service account metadata annotations"
+  type        = map(string)
+  default     = {}
+}
+
 variable "namespace" {
   description = "Namespace to deploy all resources to"
   type        = string

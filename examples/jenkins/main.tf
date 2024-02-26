@@ -14,7 +14,11 @@ provider "vault" {
 module "jenkins" {
   source = "../.."
 
-  service_name     = "jenkins-remote-cloud"
+  service_name = "jenkins-remote-cloud"
+  # for example if a pre created resource needs to be annotated in current sa
+  service_account_annotations = {
+    "eks.amazonaws.com/role-arn" : "arn:aws:iam::123456789123:role/jenkins-agent"
+  }
   namespace        = "jenkins-agents"
   create_namespace = true
   service_roles = {

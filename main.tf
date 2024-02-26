@@ -12,8 +12,9 @@ resource "kubernetes_namespace" "namespace" {
 # create service account to be used to authenticated to kubernetes api
 resource "kubernetes_service_account" "service_account" {
   metadata {
-    name      = var.service_name
-    namespace = var.namespace
+    name        = var.service_name
+    annotations = var.service_account_annotations
+    namespace   = var.namespace
     labels = {
       terraform = "true"
     }
