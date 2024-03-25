@@ -1,6 +1,10 @@
 # terraform-kubernetes-cluster-api-access
 Terraform module that prepares kubernetes for remote access
 
+* users within the AWS ecosystem (EKS) - it is strongly advised to **not** use this module.  
+  Instead, opting for the [EKS Access Entries](https://docs.aws.amazon.com/eks/latest/userguide/access-entries.html#creating-access-entries) feature is recommended.   
+  This feature employs a temporary token, leveraging the native AWS API for enhanced functionality and security.
+
 ## Usage
 ```hcl
 module "example" {
